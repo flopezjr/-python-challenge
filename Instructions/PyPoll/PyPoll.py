@@ -2,30 +2,65 @@ import os
 import csv
 
 
-path = os.path.join("Resouces", "election_data.csv")
 
-total_votes 
+path = os.path.join("Resources", "election_data.csv")
 
-with open(path, "r") as in_file
+votes = []
+candidates =[]
+
+counter = {
+    "Khan": 0,
+    "Correy": 0,
+    "Li": 0,
+    "OTooley": 0  
+}
+
+with open(path, "r") as file:
     
-    dict_reader = csv.DictReader(in_file)
+    csv_reader = csv.reader(file)
+    next(csv_reader)
     
-    for row in dict_reader:
-        if row ['Candidate']
-        
-        
+    for row in csv_reader:
+        votes.append(row)
+        candidates.append(row[2])
+
+for candidate in candidates  :
+    if candidate =="Khan":
+        counter["Khan"] +=1
+    elif candidate =="Correy":
+        counter["Correy"] += 1
+    elif candidate =="Li":
+        counter["Li"] += 1
+    elif candidate =="O'Tooley":
+        counter["OTooly"] += 1  
+    
+#counter to integer
+
+    khan_votes = int(counter["Khan"])
+    correy_votes = int(counter["Correy"])
+    li_votes = int(counter["Li"])
+    otooly_votes = int(counter["OTooly"])
+
+# Votes per Candidate by percent
+
+    total_votes = khan_votes + correy_votes + li_votes + otooly_votes
+    k_p = (kahn_votes / total_votes) * 100
+    c_p = (kahn_votes / total_votes) * 100
+    l_p = (kahn_votes / total_votes) * 100
+    o_p = (kahn_votes / total_votes) * 100
+
 # Final Print out
 
 print("Election Results")
 print("-" * 25)
-print(f'Total Votes: {num_votes}')
+print(f'Total Votes: {len(votes)}')
 print("-" * 25)
-print(f'Khan: {total}')
-print(f'Correy: {total}')
-print(f'Li: {total}')
-print(f"O'Tooley: {total}")
+print(f"Khan: {round(k_p)}% ({counter['Khan']})")
+print(f"Correy: {round(c_p)}% ({counter['Correy']})")
+print(f"Li: {round(l_p)}% ({counter['Li']})")
+print(f"O'Tooley: {round(o_p)}% ({counter['Otooly']})")
 print("-" * 25)
-print(f'Winner: {___}')
+print(f"Winner: Khan")
 print("-" * 25)
 
         

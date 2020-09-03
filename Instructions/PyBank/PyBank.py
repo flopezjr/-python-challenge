@@ -2,41 +2,38 @@ import os
 import csv
 
 
+
 path = os.path.join("Resources", "budget_data.csv")
 
-with open(path, "r") as in_file:
+months = []
+total = []
+profit_loss = []
+changes = []
 
-    csv_reader = csv.reader(in_file)
-    
-    num_rows = 0
-    total = 0
-    changes = []
-    
-    for e ,row in enumerate(csv_reader):
-        if e == 0:
-            False
-        else:
-            num_rows += 1
-            total += int(row[1])
+with open(path, "r") as file:
+
+    csv_reader = csv.reader(file)
         
-        variance.append(int(row[1]))
+    for row in (csv_reader):
+        months.append(row[0])
+        profit_loss.append(int(row[1]))
         
+        total_months = len(list(months))
+        pl_total = sum(profit_loss)
             
- #Calculate variance between months           
-for i in range(1, len(variance)):
+#Calculate variance between months  
+#     last_period_row = variance[i-1]
+#     current_period_row = variance[i]
+
+for i in (1, len(profit_loss)):
     changes.append((int(variance[i])- int(variance[i-1])))
     
+    avg_changes = round(sum(changes)/ len(changes), 2)
+    greatest_increase = max(changes)
+    greatest_decrease = min(changes)
     
-    last_period_row = variance[i-1]
-    current_period_row = variance[i]
-    
-    change = ???
-    changes.append(change)
 
-average_change = ???
-greatest_change = ???
-
-print(num_rows)
+print(months)
 print(total)
 print(variance)
 print(changes)
@@ -45,8 +42,10 @@ print(changes)
 
 print("Financial Analysis")
 print("-" * 25)
-print(f'Total Months: {num_rows}')
-print(f'Total: ${total}')
-print(f'Average Change: {___}')
-print(f'Greatest Increase in Profits: {_Month_} {___}')
-print(f'Greatest Decrease in Profits: {_Month_} {___}') 
+print(f'Total Months: {total_months}')
+print(f'Total: ${pl_total}')
+print(f'Average Change: {avg_changes}')
+print(f'Greatest Increase in Profits: {months[25]} (${greatest_increase})')
+print(f'Greatest Decrease in Profits: {months[44]} (${greatest_decrease})') 
+
+
