@@ -1,7 +1,7 @@
 import os
 import csv
 
-
+OUT_PATH= "PyPoll.txt"
 
 path = os.path.join("Resources", "election_data.csv")
 
@@ -32,22 +32,22 @@ for candidate in candidates  :
     elif candidate =="Li":
         counter["Li"] += 1
     elif candidate =="O'Tooley":
-        counter["OTooly"] += 1  
+        counter["OTooley"] += 1  
     
 #counter to integer
 
     khan_votes = int(counter["Khan"])
     correy_votes = int(counter["Correy"])
     li_votes = int(counter["Li"])
-    otooly_votes = int(counter["OTooly"])
+    otooley_votes = int(counter["OTooley"])
 
 # Votes per Candidate by percent
 
-    total_votes = khan_votes + correy_votes + li_votes + otooly_votes
-    k_p = (kahn_votes / total_votes) * 100
-    c_p = (kahn_votes / total_votes) * 100
-    l_p = (kahn_votes / total_votes) * 100
-    o_p = (kahn_votes / total_votes) * 100
+    total_votes = khan_votes + correy_votes + li_votes + otooley_votes
+    k_p = (khan_votes / total_votes) * 100
+    c_p = (correy_votes / total_votes) * 100
+    l_p = (li_votes / total_votes) * 100
+    o_p = (otooley_votes / total_votes) * 100
 
 # Final Print out
 
@@ -58,9 +58,7 @@ print("-" * 25)
 print(f"Khan: {round(k_p)}% ({counter['Khan']})")
 print(f"Correy: {round(c_p)}% ({counter['Correy']})")
 print(f"Li: {round(l_p)}% ({counter['Li']})")
-print(f"O'Tooley: {round(o_p)}% ({counter['Otooly']})")
+print(f"O'Tooley: {round(o_p)}% ({counter['OTooley']})")
 print("-" * 25)
 print(f"Winner: Khan")
 print("-" * 25)
-
-        
