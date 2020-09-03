@@ -1,7 +1,6 @@
 import os
 import csv
 
-# OUT_PATH = "budget_data_clean.csv"
 
 path = os.path.join("Resources", "budget_data.csv")
 
@@ -11,6 +10,7 @@ with open(path, "r") as in_file:
     
     num_rows = 0
     total = 0
+    changes = []
     
     for e ,row in enumerate(csv_reader):
         if e == 0:
@@ -18,11 +18,28 @@ with open(path, "r") as in_file:
         else:
             num_rows += 1
             total += int(row[1])
-     
-        print(type(row))        
+        
+        variance.append(int(row[1]))
+        
+            
+ #Calculate variance between months           
+for i in range(1, len(variance)):
+    changes.append((int(variance[i])- int(variance[i-1])))
+    
+    
+    last_period_row = variance[i-1]
+    current_period_row = variance[i]
+    
+    change = ???
+    changes.append(change)
+
+average_change = ???
+greatest_change = ???
+
 print(num_rows)
 print(total)
-print(type(csv_reader))
+print(variance)
+print(changes)
 
 # Final Print out
 
