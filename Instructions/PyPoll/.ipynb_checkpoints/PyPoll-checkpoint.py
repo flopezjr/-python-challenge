@@ -77,4 +77,14 @@ print("-" * 25)
 #.txt file
 
 with open (TEXT_FILE, "w") as file:
-    print("TEST")
+    file.write("Election Results\n")
+    file.write("-" * 25)
+    file.write(f'\nTotal Votes: {len(votes)}\n')
+    file.write("-" * 25)
+    file.write(f"\nKhan: {round(k_p)}% ({counter['Khan']})\n")
+    file.write(f"Correy: {round(c_p)}% ({counter['Correy']})\n")
+    file.write(f"Li: {round(l_p)}% ({counter['Li']})\n")
+    file.write(f"O'Tooley: {round(o_p)}% ({counter['OTooley']})\n")
+    file.write("-" * 25)
+    file.write(f"\nWinner: {winner}\n")
+    file.write("-" * 25)
