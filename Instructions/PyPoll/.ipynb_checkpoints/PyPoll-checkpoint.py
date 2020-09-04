@@ -1,13 +1,14 @@
 import os
 import csv
 
-OUT_PATH= "PyPoll.txt"
+TEXT_FILE = os.path.join("Analysis", "PyPoll.txt")
 
 path = os.path.join("Resources", "election_data.csv")
-
+#append 
 votes = []
 candidates =[]
 
+#count candidate votes
 counter = {
     "Khan": 0,
     "Correy": 0,
@@ -23,7 +24,7 @@ with open(path, "r") as file:
     for row in csv_reader:
         votes.append(row)
         candidates.append(row[2])
-
+#Counter
 for candidate in candidates  :
     if candidate =="Khan":
         counter["Khan"] +=1
@@ -49,16 +50,31 @@ for candidate in candidates  :
     l_p = (li_votes / total_votes) * 100
     o_p = (otooley_votes / total_votes) * 100
 
-# Final Print out
+ # Winner
+    if k_p > max(c_p, l_p, o_p):
+        winner = "Khan"
+    elif c_p > max(k_p, l_p, o_p):
+        winner = "Correy"
+    elif l_p > max(c_p, k_p, o_p):
+        winner = "Li"
+    else:
+        winner = "O'Tooley"
 
+
+# Final Print out
 print("Election Results")
 print("-" * 25)
 print(f'Total Votes: {len(votes)}')
 print("-" * 25)
-print(f"Khan: {round(k_p)}% ({counter['Khan']})")
+print(f"Khan: {float(k_p)}% ({counter['Khan']})")
 print(f"Correy: {round(c_p)}% ({counter['Correy']})")
 print(f"Li: {round(l_p)}% ({counter['Li']})")
 print(f"O'Tooley: {round(o_p)}% ({counter['OTooley']})")
 print("-" * 25)
-print(f"Winner: Khan")
+print(f"Winner: {winner}")
 print("-" * 25)
+
+#.txt file
+
+with open (TEXT_FILE, "w") as file:
+    print("TEST")
